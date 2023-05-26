@@ -5,10 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>wishList - список желаний!</title>
+
+  <link rel="stylesheet" href="style/index.css">
 </head>
-<body>
+<body class="body">
   <header class="header">
-    <div class="container">
+    <div class="container header__container">
       <img class="header__logo" src="img/logo.svg" alt="логотип сервиса wishList">
       <nav class="hedaer__nav nav">
         <button class="nav__btn btn">Зарегистрироваться</button>
@@ -23,7 +25,7 @@
 
   <main class="app">
     <section class="hero">
-      <div class="container">
+      <div class="container hero__container">
         <h1 class="hero__title">WishList</h1>
 
         <p class="hero__description">Никогда не&nbsp;поздно поставить новую цель или обрести новую мечту...</p>
@@ -36,7 +38,7 @@
       </div>
     </section>
 
-    <section class="wishlist"></section>
+    <section class="wishlist">
       <div class="container">
         <div class="wishlist__profile profile">
           <img class="profile__avatar" src="img/avatar.png" alt="фото профиля">
@@ -128,6 +130,8 @@
           </li>
         </ul>
       </div>
+    </section>
+
     <section class="edit edit_profile">
       <div class="container">
         <form class="edit__form">
