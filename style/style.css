@@ -79,12 +79,21 @@ fieldset {
   text-transform: capitalize;
 }
 
+.btn__castling {
+  background:#365ABA;
+  color: #FFFFFF;
+}
+
 /* !todo */
+
+.hero {
+  display: none;
+}
 
 .wishlist {
   display: none;
 }
 
 .edit {
-  display: none;
+  /* display: none; */
 }
