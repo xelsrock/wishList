@@ -66,3 +66,18 @@
     margin-bottom: 100px;
   }
 }
+
+@media (max-width: 740px) {
+  .hero__title {
+    font-size: 96px;
+    margin-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero__description {
+    font-size: 18px;
+    margin-bottom: 54px;
+  }
+}

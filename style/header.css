@@ -40,3 +40,14 @@
     height: 59px;
   }
 }
+
+@media (max-width: 740px) {
+  .header {
+    padding: 16px 0;
+  }
+
+  .header__logo {
+    width: 32px;
+    height: 32px;
+  }
+}

@@ -60,3 +60,16 @@
     transform: rotate(-45deg);
   }
 }
+
+@media (max-width: 740px) {
+  .burger {
+    width: 30px;
+    height: 25px;
+  }
+
+  .burger__line,
+  .burger:after,
+  .burger:before {
+    height: 3px;
+  }
+}

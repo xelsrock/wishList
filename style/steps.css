@@ -34,3 +34,20 @@
     margin-right: 8px;
   }
 }
+
+@media (max-width: 740px) {
+  .steps {
+    flex-direction: column;
+    max-width: 220px;
+  }
+  
+  .steps__item {
+    flex-basis: auto;
+    text-align: center;
+  }
+  
+  .steps__item:before {
+    margin-right: 16px;
+    font-size: 40px;
+  }
+}

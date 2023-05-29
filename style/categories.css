@@ -28,4 +28,14 @@
   } 
 }
 
+@media (max-width: 740px) {
+  .categories__item {
+    margin-bottom: 42px;
+  }
+
+  .categories__title {
+    font-size: 32px;
+    margin-bottom: 22px;
+  }
+}
 

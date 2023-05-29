@@ -111,3 +111,17 @@ fieldset {
     padding: 0 34px;
   }
 }
+
+@media (max-width: 740px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .btn {
+    font-size: 20px;
+  }
+
+  .btn__castling {
+    font-size: 24px;
+  }
+}

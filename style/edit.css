@@ -1,5 +1,5 @@
 .edit {
-  margin-bottom: 174px;
+  padding-bottom: 174px;
 }
 
 .edit__avatar {
@@ -161,7 +161,6 @@
 }
 
 .edit__label-photo {
-  display: inline-block;
   position: relative;
   cursor: pointer;
 }
@@ -219,5 +218,161 @@
 
   .edit__submit-btn {
     margin-right: 18px;
+  }
+}
+
+@media (max-width: 992px) {
+  .edit {
+    padding-bottom: 80px;
+  }
+
+  .edit__avatar {
+    margin-bottom: 64px;
+  }
+
+  .edit__avatar-img {
+    max-width: 340px;
+    margin-right: 25px;
+  }
+
+  .edit__name {
+    gap: 44px;
+    margin-bottom: 44px;
+  }
+
+  .edit__icon-avatar {
+    flex: 0 0 30px;
+  }
+
+  .edit__label-avatar {
+    font-size: 24px;
+    gap: 5px;
+  }
+
+  .edit__avatar-delete {
+    font-size: 24px;
+    gap: 5px;
+  }
+
+  .edit__birthday {
+    margin-bottom: 44px;
+  }
+
+  .edit__description-input {
+    min-height: 503px;
+  }
+  
+  .edit__description {
+    margin-bottom: 62px;
+  }
+
+  .edit__wish-photo {
+    margin-bottom: 62px;
+  }
+
+  .edit__submit-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 44px 18px;
+  }
+}
+
+@media (max-width: 740px) {
+  .edit {
+    padding-top: 16px;
+    padding-bottom: 46px;
+  }
+
+  .edit__avatar {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .edit__avatar-img {
+    max-width: 160px;
+    margin-right: 0;
+    margin-bottom: 16px;
+  }
+
+  .edit__name {
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+
+  .edit__icon-avatar {
+    flex-basis: 16px;
+  }
+
+  .edit__label-avatar {
+    font-size: 14px;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .edit__avatar-delete {
+    font-size: 14px;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .edit__avatar-load {
+    align-items: center;
+  }
+
+  .edit__input {
+    height: 47px;
+    font-size: 20px;
+    padding: 0 18px;
+  }
+
+  .edit__label-text {
+    font-size: 24px;
+    margin-bottom: 12px;
+  }
+
+  .edit__birthday {
+    margin-bottom: 24px;
+  }
+
+  .edit__description-input {
+    min-height: 288px;
+  }
+  
+  .edit__description {
+    margin-bottom: 24px;
+  }
+
+  .edit__select {
+    border-radius: 8px;
+    font-size: 20px;
+    padding: 12px 27px 12px 18px;
+  }
+
+  .edit__label_select:after {
+    width: 18px;
+    height: 18px;
+  }
+
+  .edit__wish {
+    gap: 24px;
+  }
+
+  .edit__select_currency {
+    border-radius: 15px;
+  }
+  
+  .edit__wish-price {
+    gap: 14px;
+  }
+
+  .edit__wish-photo {
+    width: 288px;
+    height: 288px;
+    margin-bottom: 32px;
+  }
+
+  .edit__submit-wrapper {
+    gap: 24px;
   }
 }
