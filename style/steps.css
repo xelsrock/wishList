@@ -19,3 +19,18 @@
   font-size: 92px;
   margin-right: 16px;
 }
+
+@media (max-width: 992px) {
+  .steps {
+    gap: 25px;
+  }
+  
+  .steps__item {
+    flex-basis: 204px;
+    font-size: 16px;
+  }
+  
+  .steps__item:before {
+    margin-right: 8px;
+  }
+}

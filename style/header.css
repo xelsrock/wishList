@@ -8,17 +8,35 @@
   align-items: center;
 }
 
-.header__logo {
+@media (max-width: 1700px) {
+  .header {
+    padding: 48px 0;
+  }
 
+  .header__logo {
+    width: 54px;
+    height: 54px;
+  }
 }
 
-.hedaer__nav {
+@media (max-width: 1200px) {
+  .header {
+    padding: 38px 0;
+  }
 
+  .header__logo {
+    width: 48px;
+    height: 48px;
+  }
 }
 
-.header__burger {
+@media (max-width: 992px) {
+  .header {
+    position: relative;
+  }
 
+  .header__logo {
+    width: 59px;
+    height: 59px;
+  }
 }
-
-
-

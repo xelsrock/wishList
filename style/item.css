@@ -17,6 +17,7 @@
 }
 
 .item__title {
+  text-align: center;
   font-weight: 400;
   font-size: 28px;
   margin-bottom: 6px;
@@ -26,5 +27,21 @@
   flex-grow: 1;
   font-size: 28px;
   margin-bottom: 20px;
+}
 
+@media (max-width: 1200px) {
+  .item__image {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .item {
+    padding: 28px 30px 45px;
+  
+  }
+  
+  .item__image {
+    margin-bottom: 36px;
+  }
 }
