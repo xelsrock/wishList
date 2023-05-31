@@ -75,6 +75,12 @@ export const renderModal = ({title, description, btnSubmit, submitHandler}) => {
       </svg>`,
   });
 
+  modal.addEventListener('click', ({ target }) => {
+    if (target === modal || target.closest('.modal__close')) {
+      modal.remove();
+    };
+  });
+
   modalLabelLogin.append(modalInputLogin);
   modalLadelPassword.append(modalInputPassword);
   modalField.append(modalLabelLogin, modalLadelPassword);

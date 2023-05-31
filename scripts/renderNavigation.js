@@ -1,21 +1,22 @@
 import { createBurgerMenu } from "./createBurgerMenu.js";
 import { createElement } from "./helper.js";
-import { API_URL } from "./const.js";
+import { API_URL, JWT_TOKEN_KEY } from "./const.js";
 import { renderModal } from "./renderModal.js";
+import { auth, router } from "./index.js";
 
 
 const nav = document.querySelector('.nav');
-createBurgerMenu(nav, 'nav_active');
+createBurgerMenu(nav, 'nav_active', '.nav__btn');
 
 export const renderNavigation = () => {
   nav.textContent = '';
 
-  const buttonSingUp = createElement('button', {
+  const buttonSignUp = createElement('button', {
     className: 'nav__btn btn',
     textContent: 'Зарегистрироваться',
   });
 
-  buttonSingUp.addEventListener('click', () => {
+  buttonSignUp.addEventListener('click', () => {
     renderModal({
       title: 'Регистрация',
       description: 'Введите ваши данные для регистрации на сервисе WishList',
@@ -36,14 +37,20 @@ export const renderNavigation = () => {
 
           if (response.ok) {
             const data = await response.json();
-            console.log(data);
+            localStorage.setItem(JWT_TOKEN_KEY, data.token);
+            auth.login = data.login;
+            router.setRoute(`/user/${data.login}`);
+
+            return true;
           } else {
-            throw new Error('Invalid credentials');
+            const { message = 'Неизвестная ошибка' } = await response.json();
+            console.log(message);
+            throw new Error(message);
           };
         } catch (error) {
-          
-        }
-      }
+          alert(error.message);
+        };
+      },
     });
   });
 
@@ -56,6 +63,6 @@ export const renderNavigation = () => {
     renderModal();
   });
 
-  nav.append(buttonSingUp, buttonLogin);
+  nav.append(buttonSignUp, buttonLogin);
 };
 
