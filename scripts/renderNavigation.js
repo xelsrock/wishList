@@ -11,6 +11,40 @@ createBurgerMenu(nav, 'nav_active', '.nav__btn');
 export const renderNavigation = () => {
   nav.textContent = '';
 
+  if (auth.login) {
+    const buttonEditProfile = createElement('button', {
+      className: 'nav__btn btn',
+      textContent: 'Редактировать профиль',
+    });
+
+    buttonEditProfile.addEventListener('click', () => {
+      router.setRoute(`/editprofile/${auth.login}`);
+    });
+    
+    const buttonAddWish = createElement('button', {
+      className: 'nav__btn btn',
+      textContent: 'Добавить желание',
+    });
+
+    buttonAddWish.addEventListener('click', () => {
+      router.setRoute('/editwish/newwish');
+    });
+
+    const buttonLogOut = createElement('button', {
+      className: 'nav__btn btn',
+      textContent: 'Выйти',
+    });
+
+    buttonLogOut.addEventListener('click', () => {
+      localStorage.removeItem(JWT_TOKEN_KEY);
+      auth.login = '';
+      router.setRoute('/');
+    });
+
+    nav.append(buttonEditProfile, buttonAddWish, buttonLogOut);
+    return;
+  };
+
   const buttonSignUp = createElement('button', {
     className: 'nav__btn btn',
     textContent: 'Зарегистрироваться',
@@ -83,7 +117,7 @@ export const renderNavigation = () => {
             localStorage.setItem(JWT_TOKEN_KEY, data.token);
             auth.login = data.login;
             router.setRoute(`/user/${data.login}`);
-
+        
             return true;
           } else {
             const { message = 'Неизвестная ошибка' } = await response.json();

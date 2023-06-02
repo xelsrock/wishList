@@ -1,6 +1,7 @@
 import { JWT_TOKEN_KEY } from "./const.js";
 import { createHero } from "./createHero.js";
-import { getLogin } from "./getLogin.js";
+import { createWishList } from "./createWishlist.js";
+import { getLogin } from "./service.js";
 import { renderNavigation } from "./renderNavigation.js";
 
 export const router = Router();
@@ -11,20 +12,19 @@ const app = document.querySelector('.app');
 
 
 const handleEditPageRoute = (id) => {
-
+  
 }
 
-const handleEditProfileRoute = async (login) => {
+const handleEditProfileRoute = (login) => {
+ 
+}
+
+const handleUserRoute = async (login) => {
   app.textContent = '';
   renderNavigation();
   app.append(await createWishList(login));
 }
-
-const handleUserRoute = (login) => {
-
-}
   
-
 const handleHomePage = () => {
   app.textContent = '';
   renderNavigation();
@@ -53,6 +53,5 @@ const init = () => {
     };
   };
 };
-
 
 init();
