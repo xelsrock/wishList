@@ -20,3 +20,7 @@ export const pluralizeYears = (age) => {
     };
   };
 };
+
+export const handleImageFileSelection = (input, image) => {
+  // todo
+};
