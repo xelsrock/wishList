@@ -4,8 +4,7 @@ import { router } from "./index.js";
 import { getUser, sendDataUser } from "./service.js";
 
 export const createEditProfile = async (login) => {
-  const user = await getUser();
-
+  const user = await getUser(login);
 
   const sectionEditProfile = createElement('section', {
     className: 'edit edit_profile',
