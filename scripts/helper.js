@@ -24,3 +24,70 @@ export const pluralizeYears = (age) => {
 export const handleImageFileSelection = (input, image) => {
   // todo
 };
+
+export const createSelectDate = (selectDay, selectMonth, selectYear, birthdate) => {
+  for (let day = 0; day <= 31; day++) {
+    const option = createElement('option', {
+      value: day ? day : '',
+      text: day ? day : '',
+    });
+
+    selectDay.append(option);
+  };
+
+  const months = [
+    '',
+    'Янв',
+    'Фев',
+    'Мар',
+    'Апр',
+    'Май',
+    'Июн',
+    'Июл',
+    'Авг',
+    'Сен',
+    'Окт',
+    'Ноя',
+    'Дек',
+  ];
+
+  for (let i = 0; i < months.length; i++) {
+    const option = createElement('option', {
+      value: i,
+      text: months[i],
+    }); 
+
+    selectMonth.append(option);
+  };
+
+  const currentYear = new Date().getFullYear();
+
+  const optionYear = createElement('option', {
+    value: '',
+    text: '',
+  });
+
+  selectYear.append(optionYear);
+
+  for (let year = currentYear; year >= currentYear - 100; year--) {
+    const option = createElement('option', {
+      value: year,
+      text: year,
+    });
+
+    selectYear.append(option);
+  };
+
+  if (birthdate) {
+    const [day, month, year] = birthdate.split('/');
+      selectDay.value = day;
+      selectMonth.value = month;
+      selectYear.value = year;
+  };
+
+  [selectDay, selectMonth, selectYear].forEach(dateSelect => {
+    dateSelect.addEventListener('change', ({currentTarget}) => {
+      currentTarget.blur();
+    });
+  });
+};
