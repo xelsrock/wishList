@@ -1,3 +1,4 @@
+import { API_URL } from "./const.js";
 import { createElement, pluralizeYears } from "./helper.js";
 import { auth, router } from "./index.js";
 import { getUser } from "./service.js";
@@ -25,7 +26,7 @@ export const createWishList = async (pageLogin) => {
 
   const avatar = createElement('img', {
     className: 'profile__avatar',
-    src: 'img/avatar.png',
+    src: `${API_URL}/${user.avatar}`,
     alt: 'фото профиля',
   });
 
@@ -132,7 +133,7 @@ export const createWishList = async (pageLogin) => {
         });
 
         const itemImg = createElement('img', {
-          className: "item__image",
+          className: 'item__image',
           src: `${API_URL}/${item.img}`,
           alt: item.title,
         });
