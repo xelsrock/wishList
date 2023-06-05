@@ -28,7 +28,9 @@ export const handleImageFileSelection = (inputFile, image, inputHidden) => {
       const reader = new FileReader();
       reader.addEventListener('load', () => {
         image.src = reader.result;
-        inputHidden.value = reader.result;
+        if (inputHidden) {
+          inputHidden.value = reader.result;
+        }    
       });
 
       reader.readAsDataURL(file);
@@ -103,4 +105,17 @@ export const createSelectDate = (selectDay, selectMonth, selectYear, birthdate) 
       currentTarget.blur();
     });
   });
+};
+
+export const createOptionsCurrency = (select) => {
+  const currencies = ['RUB', 'USD', 'EUR', 'GBP'];
+
+  for (let i = 0; i < currencies.length; i++) {
+    const option = createElement('option', {
+      value: currencies[i],
+      text: currencies[i],
+    });
+
+    select.append(option);
+  }
 };
