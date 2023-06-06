@@ -52,7 +52,7 @@ export const renderNavigation = (edit, formProfile) => {
     });
 
     buttonAddWish.addEventListener('click', () => {
-      router.setRoute(`/editwish/newwish${ROUTE_NEW_WISH}`);
+      router.setRoute(`/editwish/${ROUTE_NEW_WISH}`);
     });
 
     const buttonLogOut = createElement('button', {

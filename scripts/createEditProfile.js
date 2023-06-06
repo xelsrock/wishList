@@ -200,7 +200,7 @@ export const createEditProfile = async (login) => {
     className: 'edit__description-input',
     id: 'description',
     name: 'description',
-    value: user.description,
+    value: user.description ?? '',
   });
 
   const editSubmitBtn = createElement('button', {
