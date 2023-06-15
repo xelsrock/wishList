@@ -12,6 +12,11 @@ export const renderNavigation = (edit, formProfile) => {
   nav.textContent = '';
 
   if (edit) {
+    const titleMenu = createElement('h2', {
+      className: 'nav__title-menu',
+      textContent: 'Меню',
+    });
+
     const buttonSave = createElement('button', {
       className: 'nav__btn btn',
       textContent: 'Сохранить изменения',
@@ -31,12 +36,17 @@ export const renderNavigation = (edit, formProfile) => {
       history.back();
     });
 
-    nav.append(buttonSave, buttonBack);
+    nav.append(titleMenu, buttonSave, buttonBack);
 
     return;
   }
 
   if (auth.login) {
+    const titleMenu = createElement('h2', {
+      className: 'nav__title-menu',
+      textContent: 'Меню',
+    });
+
     const buttonEditProfile = createElement('button', {
       className: 'nav__btn btn',
       textContent: 'Редактировать профиль',
@@ -66,9 +76,14 @@ export const renderNavigation = (edit, formProfile) => {
       router.setRoute('/');
     });
 
-    nav.append(buttonEditProfile, buttonAddWish, buttonLogOut);
+    nav.append(titleMenu, buttonEditProfile, buttonAddWish, buttonLogOut);
     return;
   };
+
+  const titleMenu = createElement('h2', {
+    className: 'nav__title-menu',
+    textContent: 'Добро пожаловать!',
+  });
 
   const buttonSignUp = createElement('button', {
     className: 'nav__btn btn',
@@ -78,33 +93,39 @@ export const renderNavigation = (edit, formProfile) => {
   buttonSignUp.addEventListener('click', () => {
     renderModal({
       title: 'Регистрация',
-      description: 'Введите ваши данные для регистрации на сервисе WishList',
+      description: 'Введите данные для регистрации на сервисе WishList',
       btnSubmit: 'Зарегистрироваться',
       submitHandler: async (event) => {
+        // btnSubmit.textContent = '';
+
+        // const modalButtonLoading = createElement('span', {
+        //   className: 'loader_btn',
+        // });
+      
+        // btnSubmit.append(modalButtonLoading);
         const formData = new FormData(event.target);
         const credentials = {
           login: formData.get('login'),
           password: formData.get('password'),
         };
-
+      
         try {
           const response = await fetch(`${API_URL}/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application.json' },
             body: JSON.stringify(credentials),
           });
-
+          
           if (response.ok) {
             const data = await response.json();
             localStorage.setItem(JWT_TOKEN_KEY, data.token);
             auth.login = data.login;
             router.setRoute(`/user/${data.login}`);
-
+           
             return true;
           } else {
             const { message = 'Неизвестная ошибка' } = await response.json();
-            console.log(message);
-            throw new Error(message);
+            alert(message + ', не иметь пробелов');
           };
         } catch (error) {
           alert(error.message);
@@ -146,8 +167,7 @@ export const renderNavigation = (edit, formProfile) => {
             return true;
           } else {
             const { message = 'Неизвестная ошибка' } = await response.json();
-            console.log(message);
-            throw new Error(message);
+            alert('Неверный логин или пароль');
           };
         } catch (error) {
           alert(error.message);
@@ -156,6 +176,6 @@ export const renderNavigation = (edit, formProfile) => {
     });
   });
 
-  nav.append(buttonSignUp, buttonLogin);
+  nav.append(titleMenu, buttonSignUp, buttonLogin);
 };
 

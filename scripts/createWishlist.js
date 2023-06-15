@@ -1,5 +1,5 @@
 import { API_URL } from "./const.js";
-import { createElement, pluralizeYears } from "./helper.js";
+import { createElement, monthDeclination, pluralizeYears } from "./helper.js";
 import { auth, router } from "./index.js";
 import { getUser } from "./service.js";
 
@@ -54,12 +54,13 @@ export const createWishList = async (pageLogin) => {
     const birthday = new Date(user.birthdate);
     const day = birthday.getDate();
     const month = birthday.toLocaleString('default', { month: 'long' });
+    const monthDecl = monthDeclination(month);
     const ageDifMs = Date.now() - birthday.getTime();
     const ageDate = new Date(ageDifMs);
-    const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+    const age = Math.abs(ageDate.getUTCFullYear() - 1969);
     const plural = pluralizeYears(age);
 
-    const ageMessage = `${day} ${month} исполнится ${age} ${plural}`
+    const ageMessage = `${day} ${monthDecl} исполнится ${age} ${plural}`
 
     const birthdayElem = createElement('p', {
       className: 'profile__birthday',
@@ -178,9 +179,13 @@ export const createWishList = async (pageLogin) => {
             router.setRoute(`/editwish/${item.id}`);
           });
         }
+
         wishlist.append(itemElem);
       }
-      categoriesList.append(categoriesItem);
+      // console.log(user.wish[title]);
+      if (user.wish[title].length) {
+        categoriesList.append(categoriesItem);
+      }
     }
   }
   section.append(container);

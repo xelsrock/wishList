@@ -36,6 +36,10 @@
   text-align: left;
 }
 
+.profile__edit:hover {
+  text-decoration: underline;
+}
+
 .profile__edit-icon {
   margin-right: 7px;
 }

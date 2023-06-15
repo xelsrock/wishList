@@ -18,7 +18,6 @@ let isMainPage = true;
 
 const app = document.querySelector('.app');
 
-
 const handleEditPageRoute = async (id) => {
   isMainPage = false;
   app.textContent = '';
@@ -68,4 +67,6 @@ const init = () => {
   };
 };
 
+
 init();
+

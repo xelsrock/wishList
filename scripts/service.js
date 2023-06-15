@@ -1,6 +1,8 @@
 import { API_URL, JWT_TOKEN_KEY } from "./const.js"
+import { createLoad, removeLoad } from "./helper.js";
 
 export const getLogin = async (token) => {
+  createLoad();
   try {
     const response = await fetch(`${API_URL}/getLogin`, {
       method: 'GET',
@@ -11,14 +13,16 @@ export const getLogin = async (token) => {
     });
 
     const data = await response.json();
+    removeLoad();
     return data;
   } catch (error) {
-
+    removeLoad();
     console.error(error);
   };
 };
 
 export const getUser = async (login) => {
+  createLoad();
   const token = localStorage.getItem(JWT_TOKEN_KEY);
   const headers = {
     'Content-Type': 'application/json',
@@ -27,7 +31,7 @@ export const getUser = async (login) => {
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
-
+  
   try {
     const response = await fetch(`${API_URL}/user/${login}`, {
       method: 'GET',
@@ -35,9 +39,10 @@ export const getUser = async (login) => {
     });
     
     const data = await response.json();
-   
+    removeLoad();
     return data;
   } catch (error) {
+    removeLoad();
     console.error(error);
   };
 };
@@ -93,6 +98,7 @@ export const sendDataWish = async (wishData) => {
 };
 
 export const getWish = async (id) => {
+  createLoad();
   const token = localStorage.getItem(JWT_TOKEN_KEY);
   const headers = {
     'Content-Type': 'application/json',
@@ -109,9 +115,10 @@ export const getWish = async (id) => {
     });
     
     const data = await response.json();
-   
+    removeLoad();
     return data;
   } catch (error) {
+    removeLoad();
     console.error(error);
   };
 };

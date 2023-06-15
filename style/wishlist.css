@@ -3,10 +3,13 @@
 }
 
 .wishlist__profile {
+  height: 437px;
   margin-bottom: 44px;
 }
 
 .wishlist__description {
+  word-break: break-all;
+  overflow: hidden; 
   font-size: 38px;
   margin-bottom: 77px;
 }
@@ -30,6 +33,7 @@
 
 @media (max-width: 1200px) {
   .wishlist__profile {
+    height: 466px;
     margin-bottom: 56px;
   }
 
@@ -48,6 +52,10 @@
   .wishlist {
     padding-top: 36px;
     padding-bottom: 142px;
+  }
+
+  .wishlist__profile {
+    height: 340px;
   }
 
   .wishlist__description {
@@ -75,8 +83,12 @@
     padding-bottom: 46px;
   }
 
+  .wishlist__profile {
+    height: 283px;
+  }
+
   .wishlist__description {
-    font-size: 16px;
+    font-size: 20px;
     max-width: 400px;
     margin: 0 auto 42px;
     text-align: center;

@@ -35,6 +35,10 @@
   cursor: pointer;
 }
 
+.edit__label-avatar:hover, .edit__avatar-delete:hover {
+  text-decoration: underline;
+}
+
 .edit__avatar-delete {
   display: flex;
   gap: 2px;
@@ -65,8 +69,14 @@
   font-size: 48px;
   background-color: #FFFFFF;
   border-radius: 15px;
+  border: 3px solid rgb(99, 94, 94);
   padding: 0 32px;
-  border: none;
+}
+
+.edit__input:focus, 
+.edit__description-input:focus {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 20px;
+  background-color: rgb(230, 229, 229);
 }
 
 .edit__birthday {
@@ -104,6 +114,7 @@
 
 .edit__select {
   appearance: none;
+  border: 3px solid rgb(117, 116, 116);
   border-radius: 15px;
   cursor: pointer;
   font-size: 48px;
@@ -124,12 +135,22 @@
   font-size: 38px;
   padding: 35px 32px;
   resize: none;
-  border: 3px solid #365ABA;
+  border: 3px solid rgb(117, 116, 116);
   border-radius: 15px;
+  outline: none;
 }
 
 .edit__submit-btn {
   margin-right: 22px;
+  transition: transform .2s ease-in-out;
+}
+
+.edit__delete-btn {
+  transition: transform .2s ease-in-out;
+}
+
+.edit__submit-btn:hover, .edit__delete-btn:hover {
+  transform: scale(1.1);
 }
 
 .edit__submit-btn:last-child {
@@ -182,6 +203,11 @@
   position: absolute;
   top: 8px;
   right: 8px;
+  transition: transform .2s ease-in-out;
+}
+
+.edit__wish-delete:hover {
+  transform: scale(1.1);
 }
 
 @media (max-width: 1200px) {
@@ -207,6 +233,8 @@
 
   .edit__description-input {
     min-height: 311px;
+    padding: 30px;
+    font-size: 34px;
   }
   
   .edit__description {
@@ -266,6 +294,8 @@
 
   .edit__description-input {
     min-height: 503px;
+    padding: 25px 23px;
+    font-size: 30px;
   }
   
   .edit__description {
@@ -344,6 +374,8 @@
 
   .edit__description-input {
     min-height: 288px;
+    padding: 20px 18px;
+    font-size: 26px;
   }
   
   .edit__description {

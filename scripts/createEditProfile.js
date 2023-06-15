@@ -27,10 +27,9 @@ export const createEditProfile = async (login) => {
     if (data.day && data.month && data.year) {
       data.birthdate = `${data.month}/${data.day}/${data.year}`;
     }
-
     await sendDataUser(user.id, data);
     router.setRoute(`/user/${login}`);
-  }); 
+  });
 
   const editAvatar = createElement('fieldset', {
     className: 'edit__avatar',
@@ -39,7 +38,7 @@ export const createEditProfile = async (login) => {
   const editAvatarImage = createElement('img', {
     className: 'edit__avatar-img',
     src: `${API_URL}/${user.avatar}`,
-    alt: `Аватар ${user.login}`,
+    alt: `Аватар ${user.login}`,  
   });
 
   const editAvatarLoad = createElement('div', {
@@ -67,6 +66,7 @@ export const createEditProfile = async (login) => {
   const editHiddenInput = createElement('input', {
     type: 'hidden',
     name: 'avatar',
+    value: `${API_URL}/${user.avatar}`,
   });
 
   handleImageFileSelection(editInputFile, editAvatarImage, editHiddenInput);
@@ -85,6 +85,7 @@ export const createEditProfile = async (login) => {
   editAvatarDelete.addEventListener('click', () => {
     editInputFile.value = '';
     editAvatarImage.src = 'img/avatar.png';
+    editHiddenInput.value = '';
   });
 
   editAvatarLoad.append(editLabelAvatar, editInputFile, editHiddenInput, editAvatarDelete);
@@ -111,7 +112,7 @@ export const createEditProfile = async (login) => {
 
   const editSurnameLabel = createElement('label', {
     className: 'edit__label',
-    innerHTML: '<span class="edit__label-text">Имя:</span>',
+    innerHTML: '<span class="edit__label-text">Фамилия</span>',
   });
 
   const editSurnameInput = createElement('input', {
@@ -204,7 +205,7 @@ export const createEditProfile = async (login) => {
   });
 
   const editSubmitBtn = createElement('button', {
-    className: 'edit__submit btn',
+    className: 'edit__submit-btn btn',
     textContent: 'Сохранить изменения',
     type: 'submit',
   });

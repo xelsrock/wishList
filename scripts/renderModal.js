@@ -22,16 +22,6 @@ export const renderModal = ({title, description, btnSubmit, submitHandler}) => {
   const modalForm = createElement('form', {
     className: 'modal__form',
   });
-
-  modalForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const itsOk = await submitHandler(e);
-
-    if (itsOk) {
-      modal.remove();
-    };
-  });
   
   const modalField = createElement('fieldset', {
     className: 'modal__field',
@@ -66,6 +56,26 @@ export const renderModal = ({title, description, btnSubmit, submitHandler}) => {
     textContent: btnSubmit,
   });
 
+  modalForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    modalSubmitBtn.textContent = '';
+    const modalButtonLoading = createElement('span', {
+      className: 'modal__loader-btn',
+    });
+
+    modalSubmitBtn.append(modalButtonLoading);
+
+    const itsOk = await submitHandler(e);
+    
+    if (itsOk) {
+      
+      modal.remove();
+    } else {
+      modalSubmitBtn.textContent = btnSubmit;
+    }
+  });
+
   const modalCloseBtn = createElement('button', {
     className: 'modal__close',
     innerHTML: `
@@ -80,6 +90,33 @@ export const renderModal = ({title, description, btnSubmit, submitHandler}) => {
       modal.remove();
     };
   });
+
+  const validator = new JustValidate(modalForm, {
+    errorLabelCssClass: 'modal__input-error',
+    errorLabelStyle: {
+      color: 'red',
+    },
+  });
+
+  validator.addField(modalInputLogin, [
+    {
+      rule: 'required',
+      errorMessage: 'Обязательное поле для заполнения',
+    },
+  ]);
+
+  validator.addField(modalInputPassword, [
+    {
+      rule: 'required',
+      errorMessage: 'Обязательное поле для заполнения',
+    },
+    {
+      rule: 'minLength',
+      value: 6,
+      errorMessage: 'Не менее 6-ти символов'
+    }
+  ]);
+
 
   modalLabelLogin.append(modalInputLogin);
   modalLadelPassword.append(modalInputPassword);

@@ -4,16 +4,25 @@
 }
 
 .nav__btn {
-  margin-right: 22px;
+  margin-right: 28px;
+  transition: transform .2s ease-in-out;
+}
+
+.nav__btn:hover {
+  transform: scale(1.1);
 }
 
 .nav__btn:last-child {
   margin-right: 0;
 }
 
+.nav__title-menu {
+  display: none;  
+}
+
 @media (max-width: 1200px) {
   .nav__btn {
-    margin-right: 18px;
+    margin-right: 22px;
   }
 }
 
@@ -40,12 +49,13 @@
   }
 
   .nav__btn {
-    margin-right: 0;
-    margin-bottom: 24px;
+    margin-right: 0; 
   }
 
-  .nav__btn:last-child {
-    margin-bottom: 0;
+  .nav__title-menu {
+    display: block;
+    font-size: 32px;
+    font-weight: 500;
   }
 }
 

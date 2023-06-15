@@ -13,12 +13,24 @@ export const pluralizeYears = (age) => {
     let lastDigit = years % 10;
     if (lastDigit === 1) {
       return 'год';
-    } else if (lastDigit  => 2 && lastDigit <= 4) {
+    } else if (lastDigit  >= 2 && lastDigit <= 4) {
       return 'года';
     } else {
       return 'лет';
-    };
+    }
   };
+};
+
+export const monthDeclination = (str) => {
+  const lastElem = str.trim().slice(-1).toLowerCase();
+
+  if (lastElem === 'ь') {
+    return str.replace('ь', 'я');
+  } else if (lastElem === 'т') {
+    return str + 'a';
+  } else {
+    return str.replace('й', 'я');
+  }
 };
 
 export const handleImageFileSelection = (inputFile, image, inputHidden) => {
@@ -121,3 +133,23 @@ export const createOptionsCurrency = (select, currency) => {
 
   select.value = currency ?? currencies[0];
 };
+
+const app = document.querySelector('.app');
+
+export const createLoad = () => { 
+  const mask = createElement('div', {
+    className: 'loader__mask',
+  });
+
+  const loader = createElement('span', {
+    className: 'loader',
+  });
+
+  mask.append(loader);
+  app.append(mask);
+};
+
+export const removeLoad = () => {
+  app.textContent = '';
+};
+
